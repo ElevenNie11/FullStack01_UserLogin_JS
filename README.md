@@ -8,7 +8,7 @@
       
 3. DataBase: MongoDB
 
-4. Tips: if you decide to use Express and MongoDB, you must need to use **npm**, some commands as follow:
+4. Tips: if you decide to use Express and MongoDB and session, you must need to use **npm**, some commands as follow:
    
 ````
 npm install express
