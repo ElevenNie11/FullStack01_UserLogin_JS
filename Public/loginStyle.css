@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*页面背景*/
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/*标题卡片区域*/
+.card{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.card h1{
+    font-size: 32px;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.subtitle{
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/*表单整体*/
+form{
+    width: 320px;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/*每个输入组*/
+.form-group{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+/*输入框*/
+input {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus{
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.4);
+}
+
+/*登录按钮*/
+button{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #667eea;
+    color: #fff;
+    font-size: 16px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background: #5a67d8;
+    transform: translateY(-1px);
+}
+
+/*底部提示*/
+.hint {
+    margin-top: 15px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+}
