@@ -54,7 +54,7 @@ ssh-keygen -t rsa -C "personal@example.com" -f ~/.ssh/id_rsa_personal
 # 为公司账号生成密钥  
 ssh-keygen -t rsa -C "work@example.com" -f ~/.ssh/id_rsa_work
 ```
-当然了，这个时候，对应的 ~/.ssh/config 文件也要跟着改：
+当然了，这个时候，对应的`~/.ssh/config`文件也要跟着改：
 ```
 # 个人账号
 Host github-personal
@@ -100,6 +100,10 @@ git remote set-url origin git@github-a:username-a/repo-a.git
 cd /path/to/project-b
 git remote set-url origin git@github-b:username-b/repo-b.git
 ```
+#### 完整地址： git@github-a:username-a/repo-a.git
+1. git@                       固定的 SSH 用户名
+2. github-a                   这是指我们在`~/.ssh/config`文件里自己取的别名
+3. username-a/repo-a.git	这是指 GitHub 上的仓库位置（用户名/仓库名.git）
 
 👉*Once this step is complete, `git push` or `git pull` operations in your respective repositories will automatically use the corresponding account identity—no need to switch manually!*
 | 完成这一步后，你在各自的仓库里执行`git push`或`git pull`时，就会自动使用对应的账号身份了，无需手动切换😉
