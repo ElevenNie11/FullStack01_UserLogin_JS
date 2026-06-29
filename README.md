@@ -36,6 +36,38 @@ ssh-keygen -t rsa -C "your-email-a@example.com" -f ~/.ssh/id_rsa_a
 # 为账号B生成密钥
 ssh-keygen -t rsa -C "your-email-b@example.com" -f ~/.ssh/id_rsa_b
 ```
+其中，`id_rsa_a`和`id_rsa_b`就是文件名，当我们执行命令：
+````
+ssh-keygen -t rsa -C "nieshiyi20060927@qq.com" -f ~/.ssh/id_rsa_a
+````
+系统就会在`~/.ssh/`目录下自动生成两个文件：
+
+- `id_rsa_a` 这是私钥文件（保密，绝不能泄露）
+
+- `id_rsa_a.pub` 这是公钥文件（需要上传到GitHub）
+
+文件名自己可以随意取 eg：
+```
+# 为个人账号生成密钥
+ssh-keygen -t rsa -C "personal@example.com" -f ~/.ssh/id_rsa_personal
+
+# 为公司账号生成密钥  
+ssh-keygen -t rsa -C "work@example.com" -f ~/.ssh/id_rsa_work
+```
+当然了，这个时候，对应的 ~/.ssh/config 文件也要跟着改：
+```
+# 个人账号
+Host github-personal
+    ElevenNie11 github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_personal
+
+# 公司账号
+Host github-work
+    ElevenNie11 github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_work
+```
 
 👉*2.Add the public keys to the corresponding GitHub accounts: log in to account A, go to `Settings` > `SSH and GPG keys`, and add the contents of `id_rsa_a.pub`. Do the same for account B by adding `id_rsa_b.pub`.*
  | 将公钥添加到对应的GitHub账号，登录账号A，在`Settings` -> `SSH and GPG keys` 中，添加`id_rsa_a.pub`的内容。账号B同理，添加`id_rsa_b.pub`
