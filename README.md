@@ -107,3 +107,116 @@ git remote set-url origin git@github-b:username-b/repo-b.git
 
 👉*Once this step is complete, `git push` or `git pull` operations in your respective repositories will automatically use the corresponding account identity—no need to switch manually!*
 | 完成这一步后，你在各自的仓库里执行`git push`或`git pull`时，就会自动使用对应的账号身份了，无需手动切换😉
+
+---
+
+# ⚙️For Example: How to change and configure my another account？
+### GitHub Account 01:
+- Username: Nieshiyi11        (You can find this account in the GitHub!)
+- email: ElevenNie11@gmail.com
+
+### GitHub Account 02:
+- Username: ElevenNie11
+- email: nieshiyi20060927@qq.com
+
+👉Tips: *You can find my first GitHub account(**Nieshiyi11**), which is primarily used for learning new technologies, while the second one(**ElevenNie11**) is used to document my projects😉*
+  
+#### [Step 01]: Generate a new SSH key for the new account(Filename:eleven)
+```
+ssh-keygen -t rsa -C "nieshiyi20060927@qq.com" -f ~/.ssh/id_rsa_eleven
+```
+After execution, check by running `ls ~/.ssh/`and you should see:
+```
+id_rsa_eleven        私钥（保密）
+id_rsa_eleven.pub    公钥（要上传到GitHub）
+```
+
+#### [Step 02]: Add the public key to the new GitHub account
+#### 👉Copy the public key content
+```
+cat ~/.ssh/id_rsa_eleven.pub
+```
+*Select the entire output (from "ssh-rsa" at the beginning to the email address at the end)!!!*
+
+#### 👉Log in to your second GitHub account (username: `ElevenNie11`)
+
+- Click your profile icon in the top-right corner → Settings.
+
+- Select "`SSH and GPG keys`" from the left-hand menu.
+
+- Click the green "`New SSH Key`" button.
+
+- For "`Title`",you can write any name if you like.
+
+- Paste the content you copied earlier into the "`Key`" field.
+
+- Click "`Add SSH Key`"
+
+#### [Step 03]: Modify `~/.ssh/config` file
+👉Open `~/.ssh/config` using a text editor and **add the following content to the end of the file**:
+```
+# 第二个账号 ElevenNie11 的配置
+Host github-eleven
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_eleven
+```
+---
+```
+# 第二个账号 ElevenNie11 的配置
+Host github-eleven                      这是你自己取的别名（随便起）
+    HostName github.com                 固定填 github.com（真实服务器）
+    User git                            固定填 git
+    IdentityFile ~/.ssh/id_rsa_eleven   指向对应的私钥文件
+```
+---
+
+#### [Step 04]: Test whether the SSH connection is successful
+```
+ssh -T git@github-eleven
+
+# If you see information similar to the following, the configuration was successful:
+
+Hi ElevenNie11! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+#### [Step 05]: Configure the remote address for the new account's repository
+> Suppose you have a repository named `FullStack01_UserLogin_JS` on your new account (`ElevenNie11`) and you already have this repository locally
+##### 👉Modifying the remote URL of an existing repository
+-  Enter your local repository content:
+  ```
+  cd /path/to/your/project
+  ```
+- View the current remote address:
+  ```
+  git remote -v
+  # 会看到类似：origin  git@github.com:Nieshiyi11/FullStack01_UserLogin_JS.git
+  ```
+- Change to point to the new account:
+  ```
+  git remote set-url origin git@github-eleven:ElevenNie11/FullStack01_UserLogin_JS.git
+  ```
+- Review and confirm again:
+  ```
+  git remote -v
+  #现在应该显示：origin  git@github-eleven:ElevenNie11/FullStack01_UserLogin_JS.git
+  ```
+
+  #### [Step 06]: Set the correct user information for the current repository⚠️
+  > Since your global Git configuration likely still holds the details of the first account, you need to set user information specifically for this repository to prevent the wrong author from appearing in the commit history!
+
+-  Enter your local repository content:
+  ```
+  cd /path/to/your/project
+  ```
+- Set the username and email for this repository (*affects only the current repository*):
+  ```
+  git config user.name "ElevenNie11"
+  git config user.email "nieshiyi20060927@qq.com"
+  ```
+- Verification Settings:
+  ```
+  git config user.name
+  git config user.email
+  ```
+<img width="488" height="211" alt="image" src="https://github.com/user-attachments/assets/88b592de-3ed9-415e-b657-95e420470f06" />
