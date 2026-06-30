@@ -221,19 +221,19 @@ Hi ElevenNie11! You've successfully authenticated, but GitHub does not provide s
   ```
 <img width="488" height="211" alt="image" src="https://github.com/user-attachments/assets/88b592de-3ed9-415e-b657-95e420470f06" />
 
-### [Tip]: 如果已经配好了一次SSH密钥，再启动新项目就不用再从头到尾再配置一次密钥了...直接使用 Bash 命令行即可：
+### 🚨[Tip]: If you have already set up your SSH keys, you don't need to go through the entire configuration process again when starting a new project—you can simply use the Bash command line 如果已经配好了一次SSH密钥，再启动新项目就不用再从头到尾再配置一次密钥了...直接使用 Bash 命令行即可：
 ```
 #先看看自己的 HOST 是什么
 cat ~/.ssh/config
 ```
-并且在输出里找到类似于这样的部分：
+And look for a section like this 并且在输出里找到类似于这样的部分：
 ```
 Host xxxxx    ← 这后面的就是你自己取的名字
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_rsa_eleven
 ```
-然后在GitHub网页里新建一个仓库，再关联远程仓库即可：
+Then, create a new repository on GitHub and link it to the remote repository 然后在GitHub网页里新建一个仓库，再关联远程仓库即可：
 ```
 git remote add origin git@[HOST名字]:[GitHub用户名]/[新仓库名].git
 
