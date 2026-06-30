@@ -239,4 +239,6 @@ git remote add origin git@[HOST名字]:[GitHub用户名]/[新仓库名].git
 
 git remote add origin git@github-eleven:ElevenNie11/PaySystem_Java.git
 ```
+<img width="545" height="180" alt="image" src="https://github.com/user-attachments/assets/ee1d73da-e1e6-466d-825c-6171e4058b36" />
+
 <img width="595" height="319" alt="image" src="https://github.com/user-attachments/assets/29d6807b-fedb-42d4-ab25-15750b034e7e" />
