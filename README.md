@@ -220,3 +220,23 @@ Hi ElevenNie11! You've successfully authenticated, but GitHub does not provide s
   git config user.email
   ```
 <img width="488" height="211" alt="image" src="https://github.com/user-attachments/assets/88b592de-3ed9-415e-b657-95e420470f06" />
+
+### [Tip]: 如果已经配好了一次SSH密钥，再启动新项目就不用再从头到尾再配置一次密钥了...直接使用 Bash 命令行即可：
+```
+#先看看自己的 HOST 是什么
+cat ~/.ssh/config
+```
+并且在输出里找到类似于这样的部分：
+```
+Host xxxxx    ← 这后面的就是你自己取的名字
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_eleven
+```
+然后在GitHub网页里新建一个仓库，再关联远程仓库即可：
+```
+git remote add origin git@[HOST名字]:[GitHub用户名]/[新仓库名].git
+
+git remote add origin git@github-eleven:ElevenNie11/PaySystem_Java.git
+```
+<img width="595" height="319" alt="image" src="https://github.com/user-attachments/assets/29d6807b-fedb-42d4-ab25-15750b034e7e" />
