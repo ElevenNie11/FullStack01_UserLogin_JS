@@ -33,7 +33,7 @@ app.get('/dashboard.html', requireLogin, (request, response) => {
     response.sendFile(path.join(__dirname, 'protected', 'dashboard.html'));
 });
 
-app.use(express.static(path.join(__dirname, '/public'))); //托管静态资源，让这些静态资源 HTML 和 CSS 能直接通过 URL 访问到
+app.use(express.static(path.join(__dirname, 'public'))); //托管静态资源，让这些静态资源 HTML 和 CSS 能直接通过 URL 访问到
 
 //创建路由规则
 //1. 访问根路径时，跳转到登录页
