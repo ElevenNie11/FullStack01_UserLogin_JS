@@ -8,7 +8,7 @@ const User = require('./models/user');  //引入用户模型
 
 //创建服务对象
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;  //2026.7.2 新增：设置 PORT 环境变量
 
 //中间件设置：解析表单数据
 app.use(express.urlencoded({ extended: true })); // express 内置的“解析器”，用来解析表单提交的数据
@@ -96,6 +96,12 @@ app.post('/register', (request, response) => {
 });
 
 //启动服务器，监听端口
+/*
 app.listen(PORT, () => {
     console.log('服务启动，端口 PORT3000 正在监听中...');
+});
+*/
+
+app.listen(PORT, () => {
+    console.log(`服务启动，端口 ${PORT} 正在监听中...`);
 });
