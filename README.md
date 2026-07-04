@@ -195,6 +195,11 @@ Hi ElevenNie11! You've successfully authenticated, but GitHub does not provide s
 - Change to point to the new account:
   ```
   git remote set-url origin git@github-eleven:ElevenNie11/FullStack01_UserLogin_JS.git
+  #或者直接修改远程地址
+  #如果这个仓库要用 account2
+  git remote set-url origin git@github-account2:username/repo.git
+  #如果要用 account1
+  git remote set-url origin git@github-account1:username/repo.git
   ```
 - Review and confirm again:
   ```
